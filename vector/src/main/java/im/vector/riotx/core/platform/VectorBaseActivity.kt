@@ -24,6 +24,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
@@ -264,6 +265,8 @@ abstract class VectorBaseActivity : AppCompatActivity(), HasScreenInjector {
                     debugReceiver = DebugReceiver()
                     registerReceiver(debugReceiver, it)
                 }
+
+        showActivityInfo()
     }
 
     override fun onPause() {
@@ -307,6 +310,10 @@ abstract class VectorBaseActivity : AppCompatActivity(), HasScreenInjector {
     /* ==========================================================================================
      * PRIVATE METHODS
      * ========================================================================================== */
+
+    private fun showActivityInfo() {
+        if (BuildConfig.DEBUG) Toast.makeText(baseContext, "fragment: "+this.javaClass.simpleName, Toast.LENGTH_LONG).show()
+    }
 
     internal fun getVectorComponent(): VectorComponent {
         return (application as HasVectorInjector).injector()

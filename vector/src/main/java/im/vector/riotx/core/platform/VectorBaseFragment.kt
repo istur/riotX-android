@@ -27,6 +27,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
@@ -39,6 +40,7 @@ import com.airbnb.mvrx.BaseMvRxFragment
 import com.airbnb.mvrx.MvRx
 import com.bumptech.glide.util.Util.assertMainThread
 import com.google.android.material.snackbar.Snackbar
+import im.vector.riotx.BuildConfig
 import im.vector.riotx.R
 import im.vector.riotx.core.di.DaggerScreenComponent
 import im.vector.riotx.core.di.HasScreenInjector
@@ -94,6 +96,7 @@ abstract class VectorBaseFragment : BaseMvRxFragment(), HasScreenInjector {
         childFragmentManager.fragmentFactory = screenComponent.fragmentFactory()
         injectWith(injector())
         super.onAttach(context)
+        showActivityInfo()
     }
 
     protected open fun injectWith(injector: ScreenComponent) = Unit
@@ -150,6 +153,10 @@ abstract class VectorBaseFragment : BaseMvRxFragment(), HasScreenInjector {
 
     override fun injector(): ScreenComponent {
         return screenComponent
+    }
+
+    private fun showActivityInfo() {
+        if (BuildConfig.DEBUG) Toast.makeText(context, "fragment: "+this.javaClass.simpleName, Toast.LENGTH_LONG).show()
     }
 
     /* ==========================================================================================
