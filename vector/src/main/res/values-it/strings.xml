@@ -2402,5 +2402,8 @@
     <string name="media_file_added_to_gallery">File multimediale aggiunto alla galleria</string>
     <string name="error_adding_media_file_to_gallery">Impossibile aggiungere il file multimediale alla galleria</string>
     <string name="change_password_summary">Imposta una nuova password dell\'account…</string>
+    <string name="login_connect_to_2">Entra per comunicare</string>
+    <string name="login_server_matrix_org_text_2">Per iniziare registrati o, se possiedi già un account, accedi</string>
+    <string name="login_signup_to_2">Registrati</string>
 
 </resources>

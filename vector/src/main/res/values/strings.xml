@@ -2362,4 +2362,7 @@ Not all features in Riot are implemented in RiotX yet. Main missing (and coming 
     <string name="external_link_confirmation_message">The link %1$s is taking you to another site: %2$s.\n\nAre you sure you want to continue?</string>
 
     <string name="create_room_dm_failure">"We couldn't create your DM. Please check the users you want to invite and try again."</string>
+    <string name="login_connect_to_2">Join for communicate</string>
+    <string name="login_server_matrix_org_text_2">To start register or, if you already have an account, log in</string>
+    <string name="login_signup_to_2">Sign in</string>
 </resources>

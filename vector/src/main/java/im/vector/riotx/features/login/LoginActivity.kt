@@ -86,6 +86,7 @@ open class LoginActivity : VectorBaseActivity(), ToolbarConfigurable {
 
     final override fun getLayoutRes() = R.layout.activity_login
 
+    // punto di partenza di ogni activity
     override fun initUiAndData() {
         if (isFirstCreation()) {
             addFirstFragment()
@@ -128,16 +129,19 @@ open class LoginActivity : VectorBaseActivity(), ToolbarConfigurable {
         // Assigning to dummy make sure we do not forget a case
         @Suppress("UNUSED_VARIABLE")
         val dummy = when (loginNavigation) {
-            is LoginNavigation.OpenServerSelection                        ->
-                addFragmentToBackstack(R.id.loginFragmentContainer,
-                        LoginServerSelectionFragment::class.java,
-                        option = { ft ->
-                            findViewById<View?>(R.id.loginSplashLogo)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
-                            findViewById<View?>(R.id.loginSplashTitle)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
-                            findViewById<View?>(R.id.loginSplashSubmit)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
-                            // TODO Disabled because it provokes a flickering
-                            // ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim)
-                        })
+            is LoginNavigation.OpenServerSelection                        -> {
+                loginViewModel.handle(LoginAction.UpdateHomeServer(getString(R.string.matrix_org_server_url)))
+                loginSharedActionViewModel.post(LoginNavigation.OnLoginFlowRetrieved)
+            }
+//                addFragmentToBackstack(R.id.loginFragmentContainer,
+//                        LoginServerSelectionFragment::class.java,
+//                        option = { ft ->
+//                            findViewById<View?>(R.id.loginSplashLogo)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
+//                            findViewById<View?>(R.id.loginSplashTitle)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
+//                            findViewById<View?>(R.id.loginSplashSubmit)?.let { ft.addSharedElement(it, ViewCompat.getTransitionName(it) ?: "") }
+//                            // TODO Disabled because it provokes a flickering
+//                            // ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim)
+//                        })
             is LoginNavigation.OnServerSelectionDone                      -> onServerSelectionDone()
             is LoginNavigation.OnSignModeSelected                         -> onSignModeSelected()
             is LoginNavigation.OnLoginFlowRetrieved                       ->

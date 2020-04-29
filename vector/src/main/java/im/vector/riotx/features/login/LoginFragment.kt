@@ -118,8 +118,8 @@ class LoginFragment @Inject constructor() : AbstractLoginFragment() {
     private fun setupUi(state: LoginViewState) {
         val resId = when (state.signMode) {
             SignMode.Unknown -> error("developer error")
-            SignMode.SignUp  -> R.string.login_signup_to
-            SignMode.SignIn  -> R.string.login_connect_to
+            SignMode.SignUp  -> R.string.login_signup_to_2
+            SignMode.SignIn  -> R.string.login_connect_to_2
         }
 
         loginFieldTil.hint = getString(when (state.signMode) {
@@ -130,10 +130,12 @@ class LoginFragment @Inject constructor() : AbstractLoginFragment() {
 
         when (state.serverType) {
             ServerType.MatrixOrg -> {
-                loginServerIcon.isVisible = true
-                loginServerIcon.setImageResource(R.drawable.ic_logo_matrix_org)
-                loginTitle.text = getString(resId, state.homeServerUrl.toReducedUrl())
-                loginNotice.text = getString(R.string.login_server_matrix_org_text)
+                loginServerIcon.isVisible = false
+//                loginServerIcon.setImageResource(R.drawable.ic_logo_matrix_org)
+//                loginTitle.text = getString(resId, state.homeServerUrl.toReducedUrl())
+                loginTitle.text = getString(resId);
+//                loginNotice.text = getString(R.string.login_server_matrix_org_text)
+                loginNotice.isVisible = false;
             }
             ServerType.Modular   -> {
                 loginServerIcon.isVisible = true
