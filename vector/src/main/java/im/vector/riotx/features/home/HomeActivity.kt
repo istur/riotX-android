@@ -240,9 +240,10 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable {
                     .setPositiveButton(R.string.yes) { _, _ -> bugReporter.openBugReportScreen(this) }
                     .setNegativeButton(R.string.no) { _, _ -> bugReporter.deleteCrashFile(this) }
                     .show()
-        } else {
-            showDisclaimerDialog(this)
         }
+//        else {
+//            showDisclaimerDialog(this)
+//        }
 
         // Force remote backup state update to update the banner if needed
         viewModelProvider.get(SignOutViewModel::class.java).refreshRemoteStateIfNeeded()
