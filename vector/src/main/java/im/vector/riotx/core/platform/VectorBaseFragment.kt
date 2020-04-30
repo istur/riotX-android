@@ -96,7 +96,7 @@ abstract class VectorBaseFragment : BaseMvRxFragment(), HasScreenInjector {
         childFragmentManager.fragmentFactory = screenComponent.fragmentFactory()
         injectWith(injector())
         super.onAttach(context)
-        showActivityInfo()
+
     }
 
     protected open fun injectWith(injector: ScreenComponent) = Unit
@@ -120,6 +120,7 @@ abstract class VectorBaseFragment : BaseMvRxFragment(), HasScreenInjector {
     @CallSuper
     override fun onResume() {
         super.onResume()
+        showActivityInfo()
         Timber.i("onResume Fragment ${this.javaClass.simpleName}")
     }
 

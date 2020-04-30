@@ -253,7 +253,7 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable {
         configureToolbar(toolbar, false)
     }
 
-    override fun getMenuRes() = if(!BuildConfig.DEBUG) R.menu.home else -1
+    override fun getMenuRes() = if(BuildConfig.DEBUG) R.menu.home else -1
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

@@ -89,7 +89,7 @@ open class LoginActivity : VectorBaseActivity(), ToolbarConfigurable {
     // punto di partenza di ogni activity
     override fun initUiAndData() {
         if (isFirstCreation()) {
-            addFirstFragment()
+            //addFirstFragment()
         }
 
         // Get config extra
@@ -119,6 +119,8 @@ open class LoginActivity : VectorBaseActivity(), ToolbarConfigurable {
                     handleLoginViewEvents(it)
                 }
                 .disposeOnDestroy()
+
+        loginSharedActionViewModel.post(LoginNavigation.OpenServerSelection)
     }
 
     protected open fun addFirstFragment() {
