@@ -147,9 +147,9 @@ open class LoginActivity : VectorBaseActivity(), ToolbarConfigurable {
             is LoginNavigation.OnServerSelectionDone                      -> onServerSelectionDone()
             is LoginNavigation.OnSignModeSelected                         -> onSignModeSelected()
             is LoginNavigation.OnLoginFlowRetrieved                       ->
-                addFragment(R.id.loginFragmentContainer,
-                        LoginSignUpSignInSelectionFragment::class.java)
-//                        option = commonOption)
+                addFragmentToBackstack(R.id.loginFragmentContainer,
+                        LoginSignUpSignInSelectionFragment::class.java,
+                        option = commonOption)
             is LoginNavigation.OnWebLoginError                            -> onWebLoginError(loginNavigation)
             is LoginNavigation.OnForgetPasswordClicked                    ->
                 addFragmentToBackstack(R.id.loginFragmentContainer,
