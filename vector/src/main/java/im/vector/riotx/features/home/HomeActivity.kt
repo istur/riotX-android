@@ -32,6 +32,7 @@ import im.vector.matrix.android.api.session.Session
 import im.vector.matrix.android.api.util.toMatrixItem
 import im.vector.matrix.android.internal.crypto.model.CryptoDeviceInfo
 import im.vector.matrix.android.internal.crypto.model.MXUsersDevicesMap
+import im.vector.riotx.BuildConfig
 import im.vector.riotx.R
 import im.vector.riotx.core.di.ActiveSessionHolder
 import im.vector.riotx.core.di.ScreenComponent
@@ -251,7 +252,7 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable {
         configureToolbar(toolbar, false)
     }
 
-    override fun getMenuRes() = R.menu.home
+    override fun getMenuRes() = if(!BuildConfig.DEBUG) R.menu.home else -1
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
