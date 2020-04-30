@@ -5,7 +5,7 @@
     <style name="AppTheme.Launcher" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <item name="backgroundColor">@color/white</item>
-        <item name="android:windowBackground">@drawable/splash_vvf</item>
+        <item name="android:windowBackground">@drawable/splash</item>
         <item name="colorPrimaryDark">@color/primary_color_dark</item>
     </style>
 

@@ -8,10 +8,12 @@
     <item android:drawable="@color/riot_primary_background_color_light" />
 
     <!-- Centered logo -->
-    <item>
+    <item android:width="400dp"
+        android:height="400dp"
+        android:gravity="center">
         <bitmap
-            android:gravity="center"
-            android:src="@drawable/riot_splash_0_blue" />
+            android:gravity="fill"
+            android:src="@drawable/splash_vvf" />
     </item>
 
 </layer-list>
