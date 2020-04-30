@@ -5,7 +5,8 @@
 
     <!-- Accents -->
     <color name="riotx_accent">#F44336</color>
-    <color name="riotx_accent_alpha25">#3F03B381</color>
+    <color name="riotx_accent_alpha25">#3FF44336</color>
+    03B381
 
 
     <color name="riotx_destructive_accent">#FFFF4B55</color>
