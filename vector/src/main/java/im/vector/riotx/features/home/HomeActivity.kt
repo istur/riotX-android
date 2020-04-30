@@ -184,13 +184,14 @@ class HomeActivity : VectorBaseActivity(), ToolbarConfigurable {
             }
         } else if (myCrossSigningKeys?.isTrusted() == false) {
             // We need to ask
-            promptSecurityEvent(
-                    session,
-                    R.string.crosssigning_verify_this_session,
-                    R.string.confirm_your_identity
-            ) {
-                it.navigator.waitSessionVerification(it)
-            }
+            // FIXME Disabilitata la verifica con altra sessione, capire come implementare solo quando esistono più sessioni, quando è solo una è inutile
+//            promptSecurityEvent(
+//                    session,
+//                    R.string.crosssigning_verify_this_session,
+//                    R.string.confirm_your_identity
+//            ) {
+//                it.navigator.waitSessionVerification(it)
+//            }
         }
     }
 

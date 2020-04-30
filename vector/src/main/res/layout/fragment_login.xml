@@ -113,6 +113,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/forgetPasswordButton"
                     style="@style/Style.Vector.Login.Button.Text"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/auth_forgot_password"

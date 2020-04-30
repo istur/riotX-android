@@ -9,12 +9,17 @@
     <!-- Missing attributes are in the style -->
     <ImageView
         style="@style/LoginLogo"
-        tools:ignore="ContentDescription,MissingConstraints" />
+        android:id="@+id/login_logo"
+        tools:ignore="missingConstraints"
+        />
 
     <!-- Missing attributes are in the style -->
     <androidx.core.widget.NestedScrollView
-        style="@style/LoginFormScrollView"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/login_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/LoginFormScrollView">
 
         <androidx.constraintlayout.widget.ConstraintLayout style="@style/LoginFormContainer">
 
