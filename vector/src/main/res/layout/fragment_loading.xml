@@ -7,9 +7,10 @@
     <!-- Note: Animation will be started in the code -->
     <ImageView
         android:id="@+id/animatedLogoImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/riot_animated_logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/splash_vvf"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

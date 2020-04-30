@@ -8,12 +8,18 @@
     <item android:drawable="@color/riot_primary_background_color_light" />
 
     <!-- Centered logo -->
-    <item android:width="400dp"
-        android:height="400dp"
-        android:gravity="center">
-        <bitmap
-            android:gravity="fill"
-            android:src="@drawable/splash_vvf" />
-    </item>
+<!--    <item android:width="648dp"-->
+<!--        android:height="750dp"-->
+<!--        android:gravity="center">-->
+<!--        <bitmap-->
+<!--            android:gravity="center"-->
+<!--            android:src="@drawable/splash_vvf" />-->
+<!--    </item>-->
+
+    <item
+        android:width="259dp"
+        android:height="300dp"
+        android:drawable="@drawable/splash_vvf"
+        android:gravity="center" />
 
 </layer-list>
