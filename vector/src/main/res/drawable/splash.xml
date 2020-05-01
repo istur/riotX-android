@@ -19,7 +19,7 @@
     <item
         android:width="259dp"
         android:height="300dp"
-        android:drawable="@drawable/splash_vvf"
+        android:drawable="@drawable/splash_memo"
         android:gravity="center" />
 
 </layer-list>
