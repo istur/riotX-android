@@ -9,6 +9,8 @@
     <!-- Missing attributes are in the style -->
     <ImageView
         style="@style/LoginLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/login_logo"
         tools:ignore="missingConstraints"
         />

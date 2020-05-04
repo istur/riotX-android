@@ -79,7 +79,8 @@ class CreateRoomController @Inject constructor(private val stringProvider: Strin
         }
         formSwitchItem {
             id("public")
-            enabled(enableFormElement)
+//            enabled(enableFormElement)
+            enabled(false)
             title(stringProvider.getString(R.string.create_room_public_title))
             summary(stringProvider.getString(R.string.create_room_public_description))
             switchChecked(viewState.isPublic)
@@ -90,7 +91,8 @@ class CreateRoomController @Inject constructor(private val stringProvider: Strin
         }
         formSwitchItem {
             id("directory")
-            enabled(enableFormElement)
+//            enabled(enableFormElement)
+            enabled(false)
             title(stringProvider.getString(R.string.create_room_directory_title))
             summary(stringProvider.getString(R.string.create_room_directory_description))
             switchChecked(viewState.isInRoomDirectory)

@@ -16,7 +16,7 @@
         <item name="android:id">@id/loginLogo</item>
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:src">@drawable/splash_vvf</item>
+        <item name="android:src">@drawable/splash_memo</item>
         <item name="android:importantForAccessibility">no</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
@@ -27,8 +27,6 @@
     <style name="LoginLogo" parent="LoginLogo.v21">
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:layout_marginTop">32dp</item>
-        <item name="android:layout_height">150dp</item>
-        <item name="android:layout_width">150dp</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
     </style>
