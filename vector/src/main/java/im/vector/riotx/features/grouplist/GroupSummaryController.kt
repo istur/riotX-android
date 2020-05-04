@@ -34,7 +34,7 @@ class GroupSummaryController @Inject constructor(private val avatarRenderer: Ava
 
     fun update(viewState: GroupListViewState) {
         this.viewState = viewState
-        requestModelBuild()
+        //requestModelBuild()
     }
 
     override fun buildModels() {
