@@ -71,7 +71,9 @@ class RoomProfileFragment @Inject constructor(
 
     override fun getLayoutResId() = R.layout.fragment_matrix_profile
 
-    override fun getMenuRes() = R.menu.vector_room_profile
+    // FIXME DISABILITATO SHARE LINK IN QUANTO NOT IMPLEMENTED YET
+//    override fun getMenuRes() = R.menu.vector_room_profile
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
