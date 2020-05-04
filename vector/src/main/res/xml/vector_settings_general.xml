@@ -8,12 +8,13 @@
         android:key="SETTINGS_USER_SETTINGS_PREFERENCE_KEY"
         android:title="@string/settings_user_settings">
 
-        <im.vector.riotx.core.preference.UserAvatarPreference
-            android:key="SETTINGS_PROFILE_PICTURE_PREFERENCE_KEY"
-            android:title="@string/settings_profile_picture" />
+<!--        <im.vector.riotx.core.preference.UserAvatarPreference-->
+<!--            android:key="SETTINGS_PROFILE_PICTURE_PREFERENCE_KEY"-->
+<!--            android:title="@string/settings_profile_picture" />-->
 
         <im.vector.riotx.core.preference.VectorEditTextPreference
             android:key="SETTINGS_DISPLAY_NAME_PREFERENCE_KEY"
+            android:enabled="false"
             android:summary="@string/settings_display_name"
             android:title="@string/settings_display_name" />
 
@@ -25,23 +26,23 @@
         <!-- Email will be added here -->
 
         <!-- Note: inputType does not work, it is set also in code, as well as iconTint -->
-        <im.vector.riotx.core.preference.VectorEditTextPreference
-            android:icon="@drawable/ic_add_black"
-            android:inputType="textEmailAddress"
-            android:key="ADD_EMAIL_PREFERENCE_KEY"
-            android:order="100"
-            android:title="@string/settings_add_email_address"
-            app:iconTint="?attr/vctr_settings_icon_tint_color" />
+<!--        <im.vector.riotx.core.preference.VectorEditTextPreference-->
+<!--            android:icon="@drawable/ic_add_black"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:key="ADD_EMAIL_PREFERENCE_KEY"-->
+<!--            android:order="100"-->
+<!--            android:title="@string/settings_add_email_address"-->
+<!--            app:iconTint="?attr/vctr_settings_icon_tint_color" />-->
 
         <!-- Phone will be added here -->
 
         <!-- Note: iconTint does not work, it is also done in code -->
-        <im.vector.riotx.core.preference.VectorPreference
-            android:icon="@drawable/ic_add_black"
-            android:key="ADD_PHONE_NUMBER_PREFERENCE_KEY"
-            android:order="200"
-            android:title="@string/settings_add_phone_number"
-            app:iconTint="?attr/vctr_settings_icon_tint_color" />
+<!--        <im.vector.riotx.core.preference.VectorPreference-->
+<!--            android:icon="@drawable/ic_add_black"-->
+<!--            android:key="ADD_PHONE_NUMBER_PREFERENCE_KEY"-->
+<!--            android:order="200"-->
+<!--            android:title="@string/settings_add_phone_number"-->
+<!--            app:iconTint="?attr/vctr_settings_icon_tint_color" />-->
 
     </im.vector.riotx.core.preference.VectorPreferenceCategory>
 

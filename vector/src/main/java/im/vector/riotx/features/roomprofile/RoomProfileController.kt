@@ -92,13 +92,13 @@ class RoomProfileController @Inject constructor(
                 accessory = R.drawable.ic_shield_warning.takeIf { hasWarning } ?: 0,
                 action = { callback?.onMemberListClicked() }
         )
-        buildProfileAction(
-                id = "uploads",
-                title = stringProvider.getString(R.string.room_profile_section_more_uploads),
-                dividerColor = dividerColor,
-                icon = R.drawable.ic_room_profile_uploads,
-                action = { callback?.onUploadsClicked() }
-        )
+//        buildProfileAction(
+//                id = "uploads",
+//                title = stringProvider.getString(R.string.room_profile_section_more_uploads),
+//                dividerColor = dividerColor,
+//                icon = R.drawable.ic_room_profile_uploads,
+//                action = { callback?.onUploadsClicked() }
+//        )
         buildProfileAction(
                 id = "leave",
                 title = stringProvider.getString(R.string.room_profile_section_more_leave),
