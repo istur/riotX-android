@@ -99,8 +99,8 @@ class TimelineItemFactory @Inject constructor(private val messageItemFactory: Me
             }
         } catch (throwable: Throwable) {
             Timber.e(throwable, "failed to create message item")
-            defaultItemFactory.create(event, highlight, callback, throwable)
+//            defaultItemFactory.create(event, highlight, callback, throwable)
         }
-        return (computedModel ?: EmptyItem_())
+        return (computedModel as VectorEpoxyModel<*>? ?: EmptyItem_())
     }
 }
