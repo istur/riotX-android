@@ -53,16 +53,30 @@ class DefaultItemFactory @Inject constructor(private val avatarSizeProvider: Ava
                 .attributes(attributes)
     }
 
+    // FUNZIONE ORIGINALE
+//    fun create(event: TimelineEvent,
+//               highlight: Boolean,
+//               callback: TimelineEventController.Callback?,
+//               throwable: Throwable? = null): DefaultItem {
+//        val text = if (throwable == null) {
+//            stringProvider.getString(R.string.rendering_event_error_type_of_event_not_handled, event.root.getClearType())
+//        } else {
+//            stringProvider.getString(R.string.rendering_event_error_exception, event.root.eventId)
+//        }
+//        val informationData = informationDataFactory.create(event, null)
+//        return create(text, informationData, highlight, callback)
+//    }
+
+    // FUNZIONE CHE BYPASSA gli eventuali errori e non li invia alla view
     fun create(event: TimelineEvent,
                highlight: Boolean,
-               callback: TimelineEventController.Callback?,
-               throwable: Throwable? = null): DefaultItem {
-        val text = if (throwable == null) {
-            stringProvider.getString(R.string.rendering_event_error_type_of_event_not_handled, event.root.getClearType())
-        } else {
-            stringProvider.getString(R.string.rendering_event_error_exception, event.root.eventId)
-        }
+               callback: TimelineEventController.Callback?): DefaultItem {
+//        val text = if (throwable == null) {
+//            stringProvider.getString(R.string.rendering_event_error_type_of_event_not_handled, event.root.getClearType())
+//        } else {
+//            stringProvider.getString(R.string.rendering_event_error_exception, event.root.eventId)
+//        }
         val informationData = informationDataFactory.create(event, null)
-        return create(text, informationData, highlight, callback)
+        return create("", informationData, highlight, callback)
     }
 }

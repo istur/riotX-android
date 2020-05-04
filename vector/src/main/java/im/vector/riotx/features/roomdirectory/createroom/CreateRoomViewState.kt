@@ -22,8 +22,11 @@ import com.airbnb.mvrx.Uninitialized
 
 data class CreateRoomViewState(
         val roomName: String = "",
-        val isPublic: Boolean = false,
-        val isInRoomDirectory: Boolean = false,
+//        val isPublic: Boolean = false,
+//        val isInRoomDirectory: Boolean = false,
+        // TODO per adesso inseriamo i valori di Public e roomDirectory a true fin quando non possiamo usare le stanze private
+        val isPublic: Boolean = true,
+        val isInRoomDirectory: Boolean = true,
         val isEncrypted: Boolean = false,
         val asyncCreateRoomRequest: Async<String> = Uninitialized
 ) : MvRxState

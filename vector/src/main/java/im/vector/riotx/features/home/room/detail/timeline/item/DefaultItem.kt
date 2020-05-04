@@ -18,6 +18,7 @@ package im.vector.riotx.features.home.room.detail.timeline.item
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
@@ -42,6 +43,12 @@ abstract class DefaultItem : BaseEventItem<DefaultItem.Holder>() {
         attributes.avatarRenderer.render(attributes.informationData.matrixItem, holder.avatarImageView)
         holder.view.setOnLongClickListener(attributes.itemLongClickListener)
         holder.readReceiptsView.render(attributes.informationData.readReceipts, attributes.avatarRenderer, _readReceiptsClickListener)
+        // inserito questo controllo perchè quando arrivano degli errori il componente viene ancora creato ma vuoto, cosi viene nascosto
+        if (attributes.text.isEmpty()) {
+            holder.messageTextView.visibility = View.GONE;
+            holder.avatarImageView.visibility = View.GONE;
+            holder.itemDefaultContainerView.visibility = View.GONE
+        }
     }
 
     override fun getEventIds(): List<String> {
@@ -53,6 +60,7 @@ abstract class DefaultItem : BaseEventItem<DefaultItem.Holder>() {
     class Holder : BaseHolder(STUB_ID) {
         val avatarImageView by bind<ImageView>(R.id.itemDefaultAvatarView)
         val messageTextView by bind<TextView>(R.id.itemDefaultTextView)
+        val itemDefaultContainerView by bind<LinearLayout>(R.id.itemDefaultContainerView);
     }
 
     data class Attributes(
