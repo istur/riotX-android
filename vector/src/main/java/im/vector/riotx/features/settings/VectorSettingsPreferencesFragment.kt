@@ -39,9 +39,9 @@ class VectorSettingsPreferencesFragment @Inject constructor(
     override var titleRes = R.string.settings_preferences
     override val preferenceXmlRes = R.xml.vector_settings_preferences
 
-    private val selectedLanguagePreference by lazy {
-        findPreference<VectorPreference>(VectorPreferences.SETTINGS_INTERFACE_LANGUAGE_PREFERENCE_KEY)!!
-    }
+//    private val selectedLanguagePreference by lazy {
+//        findPreference<VectorPreference>(VectorPreferences.SETTINGS_INTERFACE_LANGUAGE_PREFERENCE_KEY)!!
+//    }
     private val textSizePreference by lazy {
         findPreference<VectorPreference>(VectorPreferences.SETTINGS_INTERFACE_TEXT_SIZE_KEY)!!
     }
@@ -150,13 +150,13 @@ class VectorSettingsPreferencesFragment @Inject constructor(
 
     private fun setUserInterfacePreferences() {
         // Selected language
-        selectedLanguagePreference.summary = VectorLocale.localeToLocalisedString(VectorLocale.applicationLocale)
-
-        selectedLanguagePreference.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            notImplemented()
-            // TODO startActivityForResult(LanguagePickerActivity.getIntent(activity), REQUEST_LOCALE)
-            true
-        }
+//        selectedLanguagePreference.summary = VectorLocale.localeToLocalisedString(VectorLocale.applicationLocale)
+//
+//        selectedLanguagePreference.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+//            notImplemented()
+//            // TODO startActivityForResult(LanguagePickerActivity.getIntent(activity), REQUEST_LOCALE)
+//            true
+//        }
 
         // Text size
         textSizePreference.summary = FontScale.getFontScaleDescription(activity!!)

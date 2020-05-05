@@ -64,15 +64,15 @@ class VectorSettingsGeneralFragment : VectorSettingsBaseFragment() {
     override var titleRes = R.string.settings_general_title
     override val preferenceXmlRes = R.xml.vector_settings_general
 
-    private var mDisplayedEmails = ArrayList<String>()
-    private var mDisplayedPhoneNumber = ArrayList<String>()
+//    private var mDisplayedEmails = ArrayList<String>()
+//    private var mDisplayedPhoneNumber = ArrayList<String>()
 
     private val mUserSettingsCategory by lazy {
         findPreference<PreferenceCategory>(VectorPreferences.SETTINGS_USER_SETTINGS_PREFERENCE_KEY)!!
     }
-    private val mUserAvatarPreference by lazy {
-        findPreference<UserAvatarPreference>(VectorPreferences.SETTINGS_PROFILE_PICTURE_PREFERENCE_KEY)!!
-    }
+//    private val mUserAvatarPreference by lazy {
+//        findPreference<UserAvatarPreference>(VectorPreferences.SETTINGS_PROFILE_PICTURE_PREFERENCE_KEY)!!
+//    }
     private val mDisplayNamePreference by lazy {
         findPreference<EditTextPreference>(VectorPreferences.SETTINGS_DISPLAY_NAME_PREFERENCE_KEY)!!
     }
@@ -91,13 +91,13 @@ class VectorSettingsGeneralFragment : VectorSettingsBaseFragment() {
 
     override fun bindPref() {
         // Avatar
-        mUserAvatarPreference.let {
-            it.setSession(session)
-            it.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-                onUpdateAvatarClick()
-                false
-            }
-        }
+//        mUserAvatarPreference.let {
+//            it.setSession(session)
+//            it.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+//                onUpdateAvatarClick()
+//                false
+//            }
+//        }
 
         // Display name
         mDisplayNamePreference.let {
@@ -121,38 +121,38 @@ class VectorSettingsGeneralFragment : VectorSettingsBaseFragment() {
         }
 
         // Add Email
-        findPreference<EditTextPreference>(ADD_EMAIL_PREFERENCE_KEY)!!.let {
-            // It does not work on XML, do it here
-            it.icon = activity?.let {
-                ThemeUtils.tintDrawable(it,
-                        ContextCompat.getDrawable(it, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
-            }
-
-            // Unfortunately, this is not supported in lib v7
-            // it.editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-
-            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-                notImplemented()
-                // addEmail((newValue as String).trim())
-                false
-            }
-        }
+//        findPreference<EditTextPreference>(ADD_EMAIL_PREFERENCE_KEY)!!.let {
+//            // It does not work on XML, do it here
+//            it.icon = activity?.let {
+//                ThemeUtils.tintDrawable(it,
+//                        ContextCompat.getDrawable(it, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
+//            }
+//
+//            // Unfortunately, this is not supported in lib v7
+//            // it.editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+//
+//            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+//                notImplemented()
+//                // addEmail((newValue as String).trim())
+//                false
+//            }
+//        }
 
         // Add phone number
-        findPreference<VectorPreference>(ADD_PHONE_NUMBER_PREFERENCE_KEY)!!.let {
-            // It does not work on XML, do it here
-            it.icon = activity?.let {
-                ThemeUtils.tintDrawable(it,
-                        ContextCompat.getDrawable(it, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
-            }
-
-            it.setOnPreferenceClickListener {
-                notImplemented()
-                // TODO val intent = PhoneNumberAdditionActivity.getIntent(activity, session.credentials.userId)
-                // startActivityForResult(intent, REQUEST_NEW_PHONE_NUMBER)
-                true
-            }
-        }
+//        findPreference<VectorPreference>(ADD_PHONE_NUMBER_PREFERENCE_KEY)!!.let {
+//            // It does not work on XML, do it here
+//            it.icon = activity?.let {
+//                ThemeUtils.tintDrawable(it,
+//                        ContextCompat.getDrawable(it, R.drawable.ic_add_black)!!, R.attr.vctr_settings_icon_tint_color)
+//            }
+//
+//            it.setOnPreferenceClickListener {
+//                notImplemented()
+//                // TODO val intent = PhoneNumberAdditionActivity.getIntent(activity, session.credentials.userId)
+//                // startActivityForResult(intent, REQUEST_NEW_PHONE_NUMBER)
+//                true
+//            }
+//        }
 
         // Advanced settings
 
@@ -168,8 +168,8 @@ class VectorSettingsGeneralFragment : VectorSettingsBaseFragment() {
         findPreference<VectorPreference>(VectorPreferences.SETTINGS_IDENTITY_SERVER_PREFERENCE_KEY)!!
                 .summary = session.sessionParams.homeServerConnectionConfig.identityServerUri.toString()
 
-        refreshEmailsList()
-        refreshPhoneNumbersList()
+//        refreshEmailsList()
+//        refreshPhoneNumbersList()
         // Contacts
         setContactsPreferences()
 
@@ -451,120 +451,120 @@ class VectorSettingsGeneralFragment : VectorSettingsBaseFragment() {
     /**
      * Refresh the emails list
      */
-    private fun refreshEmailsList() {
-        val currentEmail3PID = emptyList<String>() // TODO ArrayList(session.myUser.getlinkedEmails())
-
-        val newEmailsList = ArrayList<String>()
-        for (identifier in currentEmail3PID) {
-            // TODO newEmailsList.add(identifier.address)
-        }
-
-        // check first if there is an update
-        var isNewList = true
-        if (newEmailsList.size == mDisplayedEmails.size) {
-            isNewList = !mDisplayedEmails.containsAll(newEmailsList)
-        }
-
-        if (isNewList) {
-            // remove the displayed one
-            run {
-                var index = 0
-                while (true) {
-                    val preference = mUserSettingsCategory.findPreference<VectorPreference>(EMAIL_PREFERENCE_KEY_BASE + index)
-
-                    if (null != preference) {
-                        mUserSettingsCategory.removePreference(preference)
-                    } else {
-                        break
-                    }
-                    index++
-                }
-            }
-
-            // add new emails list
-            mDisplayedEmails = newEmailsList
-
-            val addEmailBtn = mUserSettingsCategory.findPreference<VectorPreference>(ADD_EMAIL_PREFERENCE_KEY) ?: return
-
-            var order = addEmailBtn.order
-
-            for ((index, email3PID) in currentEmail3PID.withIndex()) {
-                val preference = VectorPreference(activity!!)
-
-                preference.title = getString(R.string.settings_email_address)
-                preference.summary = "TODO" // email3PID.address
-                preference.key = EMAIL_PREFERENCE_KEY_BASE + index
-                preference.order = order
-
-                preference.onPreferenceClickListener = Preference.OnPreferenceClickListener { pref ->
-                    displayDelete3PIDConfirmationDialog(/* TODO email3PID, */ pref.summary)
-                    true
-                }
-
-                preference.onPreferenceLongClickListener = object : VectorPreference.OnPreferenceLongClickListener {
-                    override fun onPreferenceLongClick(preference: Preference): Boolean {
-                        activity?.let { copyToClipboard(it, "TODO") } // email3PID.address) }
-                        return true
-                    }
-                }
-
-                mUserSettingsCategory.addPreference(preference)
-
-                order++
-            }
-
-            addEmailBtn.order = order
-        }
-    }
+//    private fun refreshEmailsList() {
+//        val currentEmail3PID = emptyList<String>() // TODO ArrayList(session.myUser.getlinkedEmails())
+//
+//        val newEmailsList = ArrayList<String>()
+//        for (identifier in currentEmail3PID) {
+//            // TODO newEmailsList.add(identifier.address)
+//        }
+//
+//        // check first if there is an update
+//        var isNewList = true
+//        if (newEmailsList.size == mDisplayedEmails.size) {
+//            isNewList = !mDisplayedEmails.containsAll(newEmailsList)
+//        }
+//
+//        if (isNewList) {
+//            // remove the displayed one
+//            run {
+//                var index = 0
+//                while (true) {
+//                    val preference = mUserSettingsCategory.findPreference<VectorPreference>(EMAIL_PREFERENCE_KEY_BASE + index)
+//
+//                    if (null != preference) {
+//                        mUserSettingsCategory.removePreference(preference)
+//                    } else {
+//                        break
+//                    }
+//                    index++
+//                }
+//            }
+//
+//            // add new emails list
+//            mDisplayedEmails = newEmailsList
+//
+//            val addEmailBtn = mUserSettingsCategory.findPreference<VectorPreference>(ADD_EMAIL_PREFERENCE_KEY) ?: return
+//
+//            var order = addEmailBtn.order
+//
+//            for ((index, email3PID) in currentEmail3PID.withIndex()) {
+//                val preference = VectorPreference(activity!!)
+//
+//                preference.title = getString(R.string.settings_email_address)
+//                preference.summary = "TODO" // email3PID.address
+//                preference.key = EMAIL_PREFERENCE_KEY_BASE + index
+//                preference.order = order
+//
+//                preference.onPreferenceClickListener = Preference.OnPreferenceClickListener { pref ->
+//                    displayDelete3PIDConfirmationDialog(/* TODO email3PID, */ pref.summary)
+//                    true
+//                }
+//
+//                preference.onPreferenceLongClickListener = object : VectorPreference.OnPreferenceLongClickListener {
+//                    override fun onPreferenceLongClick(preference: Preference): Boolean {
+//                        activity?.let { copyToClipboard(it, "TODO") } // email3PID.address) }
+//                        return true
+//                    }
+//                }
+//
+//                mUserSettingsCategory.addPreference(preference)
+//
+//                order++
+//            }
+//
+//            addEmailBtn.order = order
+//        }
+//    }
 
     /**
      * Attempt to add a new email to the account
      *
      * @param email the email to add.
      */
-    private fun addEmail(email: String) {
-        // check first if the email syntax is valid
-        // if email is null , then also its invalid email
-        if (email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            activity?.toast(R.string.auth_invalid_email)
-            return
-        }
-
-        // check first if the email syntax is valid
-        if (mDisplayedEmails.indexOf(email) >= 0) {
-            activity?.toast(R.string.auth_email_already_defined)
-            return
-        }
-
-        notImplemented()
-        /* TODO
-        val pid = ThreePid(email, ThreePid.MEDIUM_EMAIL)
-
-        displayLoadingView()
-
-        session.myUser.requestEmailValidationToken(pid, object : MatrixCallback<Unit> {
-            override fun onSuccess(info: Void?) {
-                activity?.runOnUiThread { showEmailValidationDialog(pid) }
-            }
-
-            override fun onNetworkError(e: Exception) {
-                onCommonDone(e.localizedMessage)
-            }
-
-            override fun onMatrixError(e: MatrixError) {
-                if (TextUtils.equals(MatrixError.THREEPID_IN_USE, e.errcode)) {
-                    onCommonDone(getString(R.string.account_email_already_used_error))
-                } else {
-                    onCommonDone(e.localizedMessage)
-                }
-            }
-
-            override fun onUnexpectedError(e: Exception) {
-                onCommonDone(e.localizedMessage)
-            }
-        })
-        */
-    }
+//    private fun addEmail(email: String) {
+//        // check first if the email syntax is valid
+//        // if email is null , then also its invalid email
+//        if (email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            activity?.toast(R.string.auth_invalid_email)
+//            return
+//        }
+//
+//        // check first if the email syntax is valid
+//        if (mDisplayedEmails.indexOf(email) >= 0) {
+//            activity?.toast(R.string.auth_email_already_defined)
+//            return
+//        }
+//
+//        notImplemented()
+//        /* TODO
+//        val pid = ThreePid(email, ThreePid.MEDIUM_EMAIL)
+//
+//        displayLoadingView()
+//
+//        session.myUser.requestEmailValidationToken(pid, object : MatrixCallback<Unit> {
+//            override fun onSuccess(info: Void?) {
+//                activity?.runOnUiThread { showEmailValidationDialog(pid) }
+//            }
+//
+//            override fun onNetworkError(e: Exception) {
+//                onCommonDone(e.localizedMessage)
+//            }
+//
+//            override fun onMatrixError(e: MatrixError) {
+//                if (TextUtils.equals(MatrixError.THREEPID_IN_USE, e.errcode)) {
+//                    onCommonDone(getString(R.string.account_email_already_used_error))
+//                } else {
+//                    onCommonDone(e.localizedMessage)
+//                }
+//            }
+//
+//            override fun onUnexpectedError(e: Exception) {
+//                onCommonDone(e.localizedMessage)
+//            }
+//        })
+//        */
+//    }
 
     /**
      * Show an email validation dialog to warn the user tho valid his email link.
