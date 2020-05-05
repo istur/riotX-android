@@ -17,9 +17,9 @@
 <!--    </item>-->
 
     <item
-        android:width="259dp"
-        android:height="300dp"
-        android:drawable="@drawable/splash_memo"
+        android:drawable="@drawable/ic_logo_del_corpo_nazionale_dei_vigili_del_fuoco"
         android:gravity="center" />
+
+
 
 </layer-list>
